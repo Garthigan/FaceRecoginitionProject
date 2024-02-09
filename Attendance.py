@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import face_recognition
 import os
+import datetime
 
 path = 'Image Attendance'
 images = []
@@ -27,11 +28,11 @@ def MarkAttendance(name):
     with open('Attendance.csv','r+') as f:
         MyDataList = f.readlines()
         nameList = []
-        for line in myDataList:
+        for line in MyDataList:
             entry = line.split(',')
             nameList.append(entry[0])
         if name not in nameList:
-            now = datetime.now()
+            now = datetime.datetime.now()
             dtString = now.strftime('%H:%M:%S')
             f.writelines(f'\n{name},{dtString}')
 
